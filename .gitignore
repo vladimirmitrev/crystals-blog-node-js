@@ -1,0 +1,5 @@
+.vscode/launch.json
+client/.env.production
+node_modules
+server/.env.production
+server/.env
