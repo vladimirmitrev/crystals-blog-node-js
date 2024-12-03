@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const recipeSchema = new mongoose.Schema({
+const crystalSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Name is required!'],
@@ -47,7 +47,6 @@ const recipeSchema = new mongoose.Schema({
 }, 
 { timestamps: true}
 );
-
 const Crystal = mongoose.model('Crystal', crystalSchema);
 
 module.exports = Crystal;

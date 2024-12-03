@@ -25,6 +25,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    createdCrystals: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Crystal',
+    }],
+    createdComments: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Comment',
+    }],
+    likedPosts: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Like',
+    }],
 }, {
     collation: {
         locale: 'en',

@@ -2,7 +2,7 @@ const { SECRET } = require("../../server/config");
 
 const configEnv = {
     development: {
-        PORT: process.env.PORT || 8777,
+        PORT: process.env.PORT || 3030,
         DB_CONNECTION_STRING: 'mongodb://localhost:27017/crystal-blog',
         COOKIE_TOKEN_NAME: 'X-Authorization',
         // SECRET: process.env.SECRET,

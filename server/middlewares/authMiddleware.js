@@ -1,8 +1,8 @@
 const jwt = require('../lib/jsonwebtoken');
-const { SECRET } = require('../config');
+const { SECRET, COOKIE_TOKEN_NAME } = require('../config');
 
 exports.authMiddleware = async (req, res, next) => {
-    const token = req.cookies['auth'];
+    const token = req.cookies[COOKIE_TOKEN_NAME];
 
     if (!token) {
         return next();
@@ -17,7 +17,7 @@ exports.authMiddleware = async (req, res, next) => {
         
         next();
     } catch (err) {
-        res.clearCookie('auth');
+        res.clearCookie(COOKIE_TOKEN_NAME);
         res.redirect('/auth/login');
     }
 }
