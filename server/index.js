@@ -7,17 +7,19 @@ const mongoose = require('mongoose');
 // const cors = require('cors');
 
 const app = express();
+const port = 3030;
 
 // app.use(cors());
 
 expressInit(app);
+
 mongoose.connect('mongodb://localhost:27017/crystal-blog');
 mongoose.connection.on('connected', () => console.log('DB is connected!'));
 mongoose.connection.on('disconnected', () => console.log('DB is DISconnected!'));
 mongoose.connection.on('error', (err) => console.log(err));
 
-app.listen(3030, () =>
-    console.log('App is listening on http://localhost:3030')
+app.listen(port, () =>
+    console.log(`App is running on http://localhost:${port}`)
   );
 // // Function to initialize the database
 // const databaseInit = async (connectionString) => {

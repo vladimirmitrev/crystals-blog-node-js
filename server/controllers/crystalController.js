@@ -47,4 +47,32 @@ router.get('/:crystalId/details', async (req, res) => {
     }
 });
 
+router.put('/:crystalId/edit', async (req, res) => {
+    const crystalData = req.body;
+    const crystalId = req.body._id;
+
+    try {
+        const editedCrystal = await crystalService.edit(crystalId, crystalData);
+    
+        res.status(200).send({ editedCrystal });
+  
+    } catch (error) {
+        
+        res.status(400).send({ message: error.message });
+    }
+});
+
+router.delete('/:crystalId', async (req, res) => {
+    const crystalId = req.params.crystalId;
+    try {
+        const deletedCrystal = await crystalService.delete(crystalId);
+    
+        res.status(200).send({ deletedCrystal });
+  
+    } catch (error) {
+        
+        res.status(400).send({ message: error.message });
+    }
+})
+
 module.exports = router;
