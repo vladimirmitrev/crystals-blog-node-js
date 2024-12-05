@@ -13,18 +13,18 @@ router.get('/', async (req, res) => {
     }
 });
 
-// router.get('/search', async (req, res) => {
-//   const { name } = req.query;
+router.get('/search', async (req, res) => {
+  const { name, healing } = req.query;
   
-//   try {
-//     const crystals = await crystalService.search(name).lean();
+  try {
+    const crystals = await crystalService.search(name, healing);
 
-//     res.render('search', { crystals, name });
+        res.status(200).send({ crystals });
+    } catch (error) {
 
-//   } catch (err) {
-//     res.render('search', { error: getErrorMessage(err), name })
-//   }
+        res.status(400).send({ message: error.message });
+    }
 
-// });
+});
 
 module.exports = router;

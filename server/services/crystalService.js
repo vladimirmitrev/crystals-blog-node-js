@@ -31,3 +31,17 @@ exports.getOneDetailed = (crystalId) => this.getOne(crystalId).populate('owner')
 exports.edit = (crystalId, crystalData) => Crystal.findByIdAndUpdate(crystalId, crystalData,{ runValidators: true});
 
 exports.delete = (crystalId) => Crystal.findByIdAndDelete(crystalId);
+
+exports.search = (name, healing) => {
+    let query = {};
+  
+    if(name) {
+      query.name = new RegExp(name, 'i');
+    }
+    if(healing) {
+        query.healing = new RegExp(healing, 'i');
+      }
+
+    
+    return Crystal.find(query);
+  };

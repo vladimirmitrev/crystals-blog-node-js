@@ -15,7 +15,7 @@ const CrystalCatalog = () => {
             setLoading(true);
             try {
                 const response = await crystalService.getAll();
-                setAllCrystals(response.data.crystals);
+                setAllCrystals(response);
             } catch (error) {
                 console.error('Error fetching crystals:', error);
             } finally {

@@ -7,24 +7,24 @@ const CREATE_URL = '/crystal/create';
 const CRYSTALS_CATALOG_URL = '/crystal/catalog';
 const CRYSTAL_URL = '/crystal';
 const HOME_URL = '/';
+const SEARCH_URL = '/search';
 // const BASE_URL = `${import.meta.env.VITE_API_URL}/crystals`;
 
 
 export const getAll = async () => {
-    const response = await axios.get(CRYSTALS_CATALOG_URL,
-        {
-            headers: {'Content-Type': 'application/json'},
-            withCredentials: true
-        }
-    );
-
-    // const response = await axios.get(`${BASE_URL}?sortBy=name`);
-
-    // const result = await request.get(`${BASE_URL}`);
-    // const result = await request.get(`${BASE_URL}?sortBy=name`);
-
-    // return Object.values(result);
-    return response;
+    let response;
+    try {
+        response = await axios.get(CRYSTALS_CATALOG_URL,
+            {
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
+            }
+        );
+    } catch (error) {
+      return error.message
+    }
+    
+    return response.data.crystals;
 }
 
 export const getOne = async (crystalId) => {
@@ -107,28 +107,13 @@ export const getByOwnerId = async (_ownerId) => {
     }
 };
 
-export const searchByName = async (name) => {
-    const whereClause = `where=name%20LIKE%20%22${name}%22`;
-
+export const searchByNameOrHealing = async (name, healing) => {
+    let response;
     try {
-        const result = await request.get(`${BASE_URL}?${whereClause}`);
-
-        return result;
+        response = await axios.get(`${SEARCH_URL}?name=${name}&healing=${healing}`);
     } catch (error) {
-        console.error('Error searching by name:', error);
-        throw error;
+        
+        return error.message;
     }
-};
-
-export const searchByHealing = async (healing) => {
-    const whereClause = `where=healing%20LIKE%20%22${healing}%22`;
-
-    try {
-        const result = await request.get(`${BASE_URL}?${whereClause}`);
-
-        return result;
-    } catch (error) {
-        console.error('Error searching by healing:', error);
-        throw error;
-    }
+    return response.data.crystals;
 };

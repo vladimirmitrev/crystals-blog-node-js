@@ -18,16 +18,20 @@ const Search = () => {
     const pageSize = 4;
 
     useEffect(() => {
-        crystalService.getAll()
-            .then(result => {
-                setAllCrystals(result);
+        const fetchAllCrystals = async () => {
+            setLoading(true);
+            try {
+                const response = await crystalService.getAll();
+                setAllCrystals(response);
+            } catch (error) {
+                console.error('Error fetching crystals:', error);
+            } finally {
                 setLoading(false);
-            })
-            .catch((err) => {
-                return showNotification(err.message, types.error);
-            })
-        
-    }, [showNotification]);
+            }
+        };
+
+        fetchAllCrystals();
+    }, []);
 
     const formik = useFormik({
         initialValues: {
@@ -49,20 +53,25 @@ const Search = () => {
         onSubmit: async (values) => {
             const name = values.name;
             const healing = values.healing;
-            let result;
+            let response;
 
             try {
-                name ? result =  await crystalService.searchByName(name) : result =  await crystalService.searchByHealing(healing);
-                setAllCrystals(result);
+                if (!name && !healing) {
+                    showNotification('Please enter at least one search parameter.', types.error);
+                    return;
+                }
+                
+                response = await crystalService.searchByNameOrHealing(name, healing);
+                setAllCrystals(response);
             } catch (err) {
-                // showNotification(err.message, types.error);
+                showNotification(err.message, types.error);
             }
         },
       });
       
         const indexOfLastCrystal = currentPage * pageSize;
         const indexOfFirstCrystal = indexOfLastCrystal - pageSize;
-        const currentCrystals = allCrystals.slice(indexOfFirstCrystal, indexOfLastCrystal);
+        const currentCrystals = allCrystals ? allCrystals.slice(indexOfFirstCrystal, indexOfLastCrystal) : '';
 
         const totalPages = Math.ceil(allCrystals.length / pageSize);
 
