@@ -1,0 +1,19 @@
+.aboutUsText {
+    max-width: 60rem;
+    margin-bottom: 2rem;
+}
+
+.aboutUsText p {
+    margin-top: 1rem;
+    color: black;
+    line-height: 1.75;
+}
+
+.exploreLink {
+    color: var(--primary);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+.exploreLink:hover {
+    color: var(--blue-dark);
+}

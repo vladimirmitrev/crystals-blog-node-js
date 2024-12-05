@@ -1,0 +1,17 @@
+.inputError {
+    color: red;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important
+}
+.pagination {
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .searchForm {
+       flex-direction: column;
+    }
+}

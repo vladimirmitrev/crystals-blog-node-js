@@ -1,0 +1,26 @@
+.googleMap {
+    height: 20rem;
+    width: 30rem;
+    border: '0'
+}
+
+@media (max-width: 1460px) {
+    .googleMap {
+        /* max-width: 20rem; */
+        /* margin-bottom: 5rem; */
+    }
+}
+
+@media (max-width: 768px) {
+    .googleMap {
+        /* max-width: 30rem; */
+        margin-bottom: 5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .googleMap {
+        max-width: 20rem;
+        margin-bottom: 5rem;
+    }
+}

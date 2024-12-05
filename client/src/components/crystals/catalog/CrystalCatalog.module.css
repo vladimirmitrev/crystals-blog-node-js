@@ -1,0 +1,19 @@
+.createForm {
+    margin: 10rem auto;
+}
+
+.inputError {
+    color: red;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important
+}
+
+.catalog {
+    overflow: auto;
+}
+.pagination {
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}

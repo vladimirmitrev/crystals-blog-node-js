@@ -1,0 +1,10 @@
+.latestCard {
+    margin: 0 auto;
+}
+
+.latestCardImage {
+    width: 10rem;
+    height: 10rem;
+    max-width: 10rem;
+    max-height: 10rem;
+}

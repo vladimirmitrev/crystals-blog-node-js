@@ -1,0 +1,45 @@
+.registerForm {
+    margin: 10rem auto;
+}
+
+.loginLink {
+    color: rgb(13, 140, 204);
+}
+
+.inputError {
+    color: red;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important
+}
+
+.regBtn {
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+}
+
+.eyeIcon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.passwordInput {
+    position: 'relative';
+}
+
+@media (max-width: 992px) {
+    .registerForm{
+        width: 50vw;
+    }
+}
+@media (max-width: 880px) {
+    .registerForm{
+        width: 60vw;
+    }
+}
+@media (max-width: 768px) {
+    .registerForm{
+        width: 70vw;
+    }
+}

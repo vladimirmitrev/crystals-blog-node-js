@@ -1,0 +1,66 @@
+.commentsForm {
+    margin: 10rem auto;
+}
+
+.inputError {
+    color: red;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important
+}
+
+.commentsUl {
+    padding: 0;
+}
+
+.commentsDiv {
+    display: table-cell;
+}
+
+.commentLi {
+    max-width: 18rem;
+    display: inline-block;
+    position: static;
+    margin: 20px auto 25px auto;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 6px 6px 12px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 0.3rem;
+    margin-left: 1rem;
+    background: #f5f5f6;
+    font-size: 1rem;
+    list-style-type: none;
+    padding: 0.5rem; 
+    word-wrap: break-word;
+    white-space: pre-wrap; 
+}
+
+.date {
+    color: rgb(51, 47, 47);
+    font-size: 0.6rem;
+}
+
+.commentP {
+    color: var(--blue-solid);
+    font-family: cursive;
+    margin: 0.2rem;
+    /* padding-bottom: 0.2rem; */
+}
+.commentText {
+    color: grey;
+}
+.addCommentBtn {
+    /* font-size: 1.25rem; */
+    letter-spacing: 2px;
+}
+.pagination {
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .commentLi {
+        max-width: 100%; /* Ensure it takes the full width on smaller screens */
+        margin-left: 1rem; /* Center the element on smaller screens */
+        padding: 1rem; /* Increase padding for better readability on smaller screens */
+    }
+}

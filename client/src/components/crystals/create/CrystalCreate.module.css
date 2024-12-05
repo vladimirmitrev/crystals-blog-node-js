@@ -1,0 +1,29 @@
+.createForm {
+    margin: 5rem auto;
+}
+
+.inputError {
+    color: red;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important
+}
+.createBtn {
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 992px) {
+    .createForm{
+        width: 50vw;
+    }
+}
+@media (max-width: 880px) {
+    .createForm{
+        width: 60vw;
+    }
+}
+@media (max-width: 768px) {
+    .createForm{
+        width: 70vw;
+    }
+}

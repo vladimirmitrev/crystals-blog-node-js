@@ -1,0 +1,45 @@
+.notification {
+    position: fixed;
+    top: calc(7% + 1rem);
+    right: 3.5rem;
+    color: #fff;
+    padding: .5rem 3.5rem .5rem 2rem;
+    border-radius: .75rem;
+    cursor: pointer;
+    z-index: 10000;
+    max-width: 20rem;
+}
+
+.notification.error {
+    background-color: rgba(255, 0, 0, 0.716);
+}
+
+.notification.warning {
+    background-color: rgba(255, 166, 0, 0.716);
+}
+
+.notification.success {
+    background-color: rgba(0, 132, 0, 0.716);
+}
+
+.notification.info {
+    background-color: rgba(0, 166, 255, 0.716);
+}
+
+.notificationMessage {
+    letter-spacing: 1px;
+}
+
+.notificationClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 600px) {
+    .notification {
+        right: 1rem;
+        z-index: 10000;
+    }
+}

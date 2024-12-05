@@ -1,0 +1,30 @@
+.myProfileDiv {
+    margin: 5rem auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.userCrystalItems {
+    /* display: flex; */
+}
+
+.profileInfo {
+    /* border: 1px solid rgb(0, 0, 0); */
+    background-color: #f5f5f6;
+    margin: 20px auto 25px auto;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2), 6px 6px 12px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 0.3rem;
+    max-width: 15rem;
+    align-items: center;
+    padding: 20px;
+    color: black;
+}
+
+.profileInfo span {
+    color: var(--primary);
+}
+.catalog {
+    overflow: auto;
+}

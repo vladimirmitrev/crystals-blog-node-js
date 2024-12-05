@@ -1,0 +1,12 @@
+.link-styles {
+    color: var(--light);
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  @media (max-width: 990px) {
+    .footerCss {
+        position: inherit;
+    }
+}

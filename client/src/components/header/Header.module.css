@@ -1,0 +1,29 @@
+.btnGradient {
+    /* color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0.5rem 3.5rem;
+    border-radius: 10rem;
+    display: inline-flex;
+    align-items: center; */
+    border: none;
+    background-image: var(--gradient-color);
+    transition: all 500ms;
+    overflow: hidden;
+    /* font-size: 20px; */
+}
+
+.btnGradient:hover {
+    background-image: var(--gradient-color-alt);
+    transform: scale(1.1);
+    /* transform: skew(10deg); */
+    /* transform: scaleY(1.1); */
+    /* transform: rotate(360deg);
+    transition: all 1000ms; */
+}
+.welcome {
+    /* font-size: 20px; */
+    color: blueviolet;
+    margin-right: 1rem;
+}
