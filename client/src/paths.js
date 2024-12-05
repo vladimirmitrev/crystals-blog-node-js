@@ -12,6 +12,7 @@ const Path = {
     Crystals: '/crystals',
     CrystalsCreate: '/crystals/create',
     CrystalDetails: '/crystals/:crystalId/details',
+    CrystalCompare: '/crystals/compare',
     About: '/about',
     Contact: '/contact',
     Search: '/search',

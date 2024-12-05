@@ -1,6 +1,5 @@
 import * as request from "../lib/request";
 import axios from '../api/axios'
-import axiosHome from 'axios';
 
 const BASE_URL = 'http://localhost:3030'
 const CREATE_URL = '/crystal/create';

@@ -23,6 +23,7 @@ import AboutUs from './components/aboutus/AboutUs';
 import ContactUs from './components/contact/ContactUs';
 import Search from './components/search/Search';
 import PageNotFound from './components/pageNotFound/PageNotFound';
+import CompareCrystals from './components/crystals/compare/CompareCrystals';
 // import CrystalDetails from './components/crystals/crystal-details/CrystalDetails';
 const CrystalDetails = lazy(() => import('./components/crystals/crystal-details/CrystalDetails'));
 
@@ -42,6 +43,7 @@ function App() {
           <Route path={Path.About} element={<AboutUs />} />
           <Route path={Path.Contact} element={<ContactUs />} />
           <Route path={Path.Search} element={<Search />} />
+          <Route path={Path.CrystalCompare} element={<CompareCrystals />} />
 
           <Route element={<GuestGuard />}>
             <Route path={Path.Login} element={<Login />} />

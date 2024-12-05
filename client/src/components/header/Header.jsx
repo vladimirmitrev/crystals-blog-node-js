@@ -32,6 +32,7 @@ const Header = () => {
                     <Link to={Path.CrystalsCreate} className="nav-item nav-link">Publish crystal</Link>
                 )}
                     <Link to={Path.Search} className="nav-item nav-link">Search</Link>
+                    <Link to={Path.CrystalCompare} className="nav-item nav-link">Compare</Link>
                     <Link to={Path.Contact} className="nav-item nav-link">Contact</Link>
                     <Link to={Path.About} className="nav-item nav-link">About Us</Link>
                     {isAuthenticated && (

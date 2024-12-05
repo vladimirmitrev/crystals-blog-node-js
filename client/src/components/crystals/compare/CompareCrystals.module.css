@@ -1,0 +1,25 @@
+.compareCard {
+    margin: 4rem auto;
+    width: 65vw;
+}
+
+.cardImage {
+    max-width: 20rem;
+    max-height: 20rem;
+    background-size: cover;
+}
+.nameAndLikes {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.btnDiv {
+    box-shadow: none;
+}
+
+@media (max-width: 990px) {
+    .compareCard {
+        margin: 0 auto;
+        width: 90vw;
+    }
+}
