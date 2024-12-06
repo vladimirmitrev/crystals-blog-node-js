@@ -8,7 +8,7 @@ const { userPayload } = require('../utils/userPayload')
 const jwt = require('../lib/jsonwebtoken');
 
 
-router.post('/register', async (req, res) => {
+router.post('/register', isGuest, async (req, res) => {
     const user = req.body;
     // console.log("Request received:", req.body);
     // console.log("Headers:", req.headers);
@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
       }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', isGuest, async (req, res) => {
   try {
       const email = req.body.email.trim();
       const password = req.body.password.trim();
@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isAuth, (req, res) => {
     res.clearCookie(COOKIE_TOKEN_NAME);
     res.status(200).send({ message: 'Successfully logged out' });
 });

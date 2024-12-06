@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { isAuth } = require('../middlewares/authMiddleware');
 const commentService = require('../services/commentService');
 
 router.get('/:crystalId', async (req, res) => {
@@ -14,7 +15,7 @@ router.get('/:crystalId', async (req, res) => {
     }
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuth,async (req, res) => {
     const commentData = req.body;
     const userId = req.body.owner;
     const crystalId = req.body.crystal;

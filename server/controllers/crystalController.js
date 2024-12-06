@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const { isAuth } = require('../middlewares/authMiddleware');
 const crystalService = require('../services/crystalService');
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuth, async (req, res) => {
     const crystalData = req.body;
     const userId = req.body.owner;
 
@@ -47,7 +48,7 @@ router.get('/:crystalId/details', async (req, res) => {
     }
 });
 
-router.put('/:crystalId/edit', async (req, res) => {
+router.put('/:crystalId/edit', isAuth, async (req, res) => {
     const crystalData = req.body;
     const crystalId = req.body._id;
 
@@ -62,7 +63,7 @@ router.put('/:crystalId/edit', async (req, res) => {
     }
 });
 
-router.delete('/:crystalId', async (req, res) => {
+router.delete('/:crystalId', isAuth, async (req, res) => {
     const crystalId = req.params.crystalId;
     try {
         const deletedCrystal = await crystalService.delete(crystalId);
