@@ -26,7 +26,8 @@ https://github.com/vladimirmitrev/crystals-blog.git
     <br/>
  ```
     cd server
-    node .\server.js
+    npm install
+    start:dev
  ```
  * To run client app
  ```
