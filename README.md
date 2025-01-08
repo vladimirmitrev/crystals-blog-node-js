@@ -27,7 +27,7 @@ https://github.com/vladimirmitrev/crystals-blog.git
  ```
     cd server
     npm install
-    start:dev
+    npm run start:dev
  ```
  * To run client app
  ```
