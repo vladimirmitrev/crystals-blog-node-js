@@ -4,7 +4,7 @@ export default function usePersistedState(key, defaultValue) {
     const [state, setState] = useState(() => {
         const persistedState = localStorage.getItem(key);
 
-        if (persistedState) {
+        if (persistedState && persistedState != "undefined") {
             return JSON.parse(persistedState);
         }
 

@@ -8,12 +8,8 @@ const { userPayload } = require('../utils/userPayload')
 const jwt = require('../lib/jsonwebtoken');
 
 
-router.post('/register', isGuest, async (req, res) => {
+router.post('/register', async (req, res) => {
     const user = req.body;
-    // console.log("Request received:", req.body);
-    // console.log("Headers:", req.headers);
-    // console.log("Route handler reached.");
-
     try {
         const createdUser = await authService.register(user);
         const accessToken = await generateToken(createdUser);
@@ -24,17 +20,17 @@ router.post('/register', isGuest, async (req, res) => {
         // res.redirect('/');
   
       } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
         
-        res.status(400).send({ message: error.message });
-      }
+        res.status(302).send({ message: error.message });
+      } 
 });
 
-router.post('/login', isGuest, async (req, res) => {
-  try {
-      const email = req.body.email.trim();
-      const password = req.body.password.trim();
+router.post('/login', async (req, res) => {
+  const email = req.body.email.trim();
+  const password = req.body.password.trim();
 
+  try {
       const user = await authService.login(email, password);
       const accessToken = await generateToken(user);
 
@@ -45,7 +41,7 @@ router.post('/login', isGuest, async (req, res) => {
       res.status(200).send({ userData, accessToken });
 
   } catch (error) {
-      res.status(400).send({ message: error.message });
+      res.status(404).send({ message: error.message });
   }
 });
 

@@ -11,7 +11,7 @@ router.get('/:crystalId', async (req, res) => {
         res.status(200).send({ comments });
     }  catch (error) {
 
-        res.status(400).send({ message: error.message });
+        res.status(404).send({ message: error.message });
     }
 });
 
@@ -28,7 +28,7 @@ router.post('/create', isAuth,async (req, res) => {
   
     } catch (error) {
         
-        res.status(400).send({ message: error.message });
+        res.status(404).send({ message: error.message });
     }
 });
 

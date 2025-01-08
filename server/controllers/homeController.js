@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         res.status(200).send({ latestCrystals });
     } catch (error) {
 
-        res.status(400).send({ message: error.message });
+        res.status(404).send({ message: error.message });
     }
 });
 
@@ -22,7 +22,7 @@ router.get('/search', async (req, res) => {
         res.status(200).send({ crystals });
     } catch (error) {
 
-        res.status(400).send({ message: error.message });
+        res.status(404).send({ message: error.message });
     }
 
 });
