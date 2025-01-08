@@ -21,16 +21,9 @@ export const AuthProvider = ({
   const { showNotification } = useContext(NotificationContext);
 
   const loginSubmitHandler = async (values) => {
+      const response = await authService.login(values.email, values.password );
     try {
-        const response = await axios.post(LOGIN_URL,
-            JSON.stringify({email: values.email, password: values.password}),
-            {
-                headers: {'Content-Type': 'application/json'},
-                withCredentials: true
-            }
-        );
-
-        if (!response || !response.data.accessToken) {
+        if (response.status == 404 || !response.data.accessToken) {
             throw new Error('Wrong email or password!');
         }
 
@@ -41,9 +34,7 @@ export const AuthProvider = ({
   
       navigate(Path.Home);
     } catch(err) {
-        if (!err?.response) {
-            err.message = 'No server response';
-        } else if (err.response?.status == 400) {
+        if (response.status == 404) {
             err.message = 'Wrong email or password!!!';
         } else {
             err.message = 'Login Failed'; 
@@ -58,39 +49,26 @@ export const AuthProvider = ({
   };
 
   const registerSubmitHandler = async (values) => {
+      const response = await authService.register(values.name, values.email, values.phone, values.password, values.confirmPassword);
         try {
-            const response = await axios.post(REGISTER_URL,
-                JSON.stringify({name: values.name, email: values.email, phone: values.phone, password: values.password, confirmPassword: values.confirmPassword}),
-                {
-                    headers: {'Content-Type': 'application/json'},
-                    withCredentials: true
-                }
-            );
-            // console.log(response);
-            // console.log(response.xsrfCookieName);
-            // console.log(JSON.stringify(response));
-            // const result =  await authService.register(values.name, values.email, values.phone, values.password, values.confirmPassword);
             setAuth(response.data.userData);
             setToken(response.data);
-            // console.log(result.body);
             
-
             localStorage.setItem('accessToken', response.data.accessToken);
             showNotification('Your registration was successful!', types.success);
             navigate(Path.Home);
         } catch (err) {
-            if (!err?.response) {
-                console.log('No server response');
-            } else if (err.response?.status == 400) {
-                console.log("Email already taken!!!");
+            if (response.status == 302) {
+                err.message = "Email already taken!!!";
             } else {
-                console.log("Registration Failed"); 
+                err.message = 'Registration Failed';
             }
           setAuth({})
           setToken({});
           localStorage.removeItem('accessToken');
-        //   console.log(err.message)
-          showNotification(err.message, types.error);
+          console.log(err.message)
+        const errorMessage = err instanceof Error ? err.message : 'Register error';
+        showNotification(errorMessage, types.error);
         }
   };
 
@@ -105,13 +83,13 @@ export const AuthProvider = ({
     loginSubmitHandler,
     registerSubmitHandler,
     logoutHandler,
-    loggedUserId: auth._id,
+    loggedUserId: auth?._id,
     // username: auth.username || auth.email,
-    email: auth.email,
+    email: auth?.email,
     isAuthenticated: !!token.accessToken,
-    userId: auth._id,
-    name: auth.name,
-    phone: auth.phone,
+    userId: auth?._id,
+    name: auth?.name,
+    phone: auth?.phone,
   };
   return (
     <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
